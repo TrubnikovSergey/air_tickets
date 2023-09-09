@@ -1,0 +1,11 @@
+.wrapper-page{
+    display: flex;
+    justify-content: center;
+}
+.container-page{
+    margin-top:50px;
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

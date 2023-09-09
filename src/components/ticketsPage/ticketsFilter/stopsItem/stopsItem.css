@@ -1,0 +1,15 @@
+.stops-item{
+    display: flex;
+    justify-content:space-between;
+    cursor: pointer;
+    padding: 2px 0px;
+}
+
+.stops-item:hover{
+    background:#f1fcff;
+}
+
+.only{
+    color: #2899f3;
+    font-weight: bold;
+}

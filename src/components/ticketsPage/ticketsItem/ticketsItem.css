@@ -1,0 +1,101 @@
+.container-list{
+    box-shadow: 0 0 5px rgb(219, 219, 219)
+    
+}
+
+.content-list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-part{
+    flex: 6;
+    border-right: solid 1px #eceff1;
+}
+
+.content-left-part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.air-company{
+    overflow: hidden;
+    height: 85px;
+    display: flex;
+    justify-content: center;   
+    align-items: center; 
+}
+
+.air-company img{
+    width: 150px;
+}
+
+.button-buy{
+    color: #fffdfc;
+    border-radius: 5px;
+    text-align: center;
+    background: #ff6d00;
+    width: 100%;
+    font-size: 16px;
+    padding: 5px 0px;
+    line-height: 1.4;
+}
+
+.button-buy:hover{
+    box-shadow: 0 0 5px #7e7e7e;
+    cursor: pointer;    
+}
+
+.button-buy:active{
+    background: #7e7e7e;
+}
+
+.right-part{
+    flex: 10;
+    color: #7e7e7e;
+}
+
+.top-part{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 15px 0px;
+}
+
+.stops{
+    color: #a3a3a3;
+    border-bottom: solid 1px #d2d5d6;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+}
+
+.airplane{
+    margin:0px 1px 2px;
+}
+
+.airplane img{
+    height: 15px;
+    width: 15px;
+}
+
+.right-part__stops{
+    display: flex;
+    align-items: flex-end;
+}
+
+.departure_time, .arrival_time{
+    font-size: 30px;    
+}
+
+.bottom-part{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 15px;
+}
+
+.place{
+    font-weight: bold;
+
+}

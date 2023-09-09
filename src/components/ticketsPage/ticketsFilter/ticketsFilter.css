@@ -1,0 +1,36 @@
+.container-filter{
+    box-shadow: 0 0 5px rgb(219, 219, 219)
+}
+
+.wrapper-filter{
+    flex: 5.5;
+}
+
+.group-button{
+    display: flex; 
+    justify-content: space-between;
+}
+.curency-button{ 
+    width: 100%; 
+    text-align: center 
+}
+
+.curency-title{
+    margin-bottom: 10px;
+    color: #7e7e7e;
+    font-weight: bold;
+}
+
+.container-curency{
+    margin: 15px 15px 30px;
+}
+
+.container-stops-list{
+    margin: 15px;
+}
+
+.stops-title{
+    margin-bottom: 15px;
+    color: #7e7e7e;
+    font-weight: bold;
+}
