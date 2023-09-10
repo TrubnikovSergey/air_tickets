@@ -13,18 +13,18 @@ interface StopsItemProp {
 const StopsItem: React.FC<StopsItemProp> = observer(({ item }) => {
   const [showOnly, setShowOnly] = useState<boolean>();
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseEnter = (item: stops) => {
     if (item.only) setShowOnly(true);
   };
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseLeave = (item: stops) => {
     if (item.only) setShowOnly(false);
   };
   const handleClickOnly = (item: stops) => {
     ticketsStore.clickOnly(item);
   };
 
-  const handleChangeCheck = (itemStops: stops, target: CheckboxChangeEventTarget) => {
-    const { checked } = target;
+  const handleChangeCheck = (itemStops: stops, e: CheckboxChangeEvent) => {
+    const { checked } = e.target;
 
     if (checked) {
       ticketsStore.addStopsToList(itemStops);
@@ -34,8 +34,8 @@ const StopsItem: React.FC<StopsItemProp> = observer(({ item }) => {
   };
 
   return (
-    <div className="stops-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <Checkbox onChange={(e: CheckboxChangeEvent) => handleChangeCheck(item, e.target)} checked={item.checked}>
+    <div className="stops-item" onMouseEnter={() => handleMouseEnter(item)} onMouseLeave={() => handleMouseLeave(item)}>
+      <Checkbox onChange={(e: CheckboxChangeEvent) => handleChangeCheck(item, e)} checked={item.checked}>
         {item.title}
       </Checkbox>
       {showOnly && (

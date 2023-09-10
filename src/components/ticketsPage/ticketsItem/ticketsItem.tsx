@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { curency, ticket } from "../../../types";
 import { Card } from "antd";
-import ru from "dayjs/locale/ru";
 import { ticketsStore } from "../../../stores/ticketsStore";
 import { observer } from "mobx-react-lite";
 import "./ticketsItem.css";
@@ -17,7 +16,7 @@ const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
     const arrayDate = date.split(".");
     const d = Number(arrayDate[0]);
     const m = Number(arrayDate[1]) - 1;
-    const y = `20${arrayDate[2]}`;
+    const y = Number(`20${arrayDate[2]}`);
     const dt = new Date(y, m, d);
 
     const mStr = dt.toLocaleString("default", { month: "long" }).slice(0, 3);
@@ -27,7 +26,7 @@ const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
     return `${d} ${mStr} ${y}, ${dayWeekName}`;
   };
 
-  const getCurency = (): curency => {
+  const getCurency = (): string => {
     switch (ticketsStore.ticketsCurency) {
       case curency.RUB:
         return "\u20bd";
@@ -43,17 +42,17 @@ const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
   };
 
   const getTitleStops = (stops: number): string => {
-    return ticketsStore.stopsList.find((item) => item.stops === stops)?.title;
+    return ticketsStore.stopsList.find((item) => item.stops === stops)?.title || "";
   };
 
-  const calcPrice = (price): number => {
+  const calcPrice = (price: number): string => {
     if (ticketsStore.ticketsCurency === curency.EUR) {
       return Number(price / 3).toFixed(2);
     }
     if (ticketsStore.ticketsCurency === curency.USD) {
       return Number(price / 2).toFixed(2);
     }
-    return price;
+    return String(price);
   };
 
   return (

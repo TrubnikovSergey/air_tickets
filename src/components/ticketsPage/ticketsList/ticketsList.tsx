@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { getAllTickets } from "../../../services/tickets";
-import { ticket } from "../../../types";
-import { Card } from "antd";
+import React from "react";
 import { TicketsItem } from "../ticketsItem/ticketsItem";
 import { observer } from "mobx-react-lite";
 import { ticketsStore } from "../../../stores/ticketsStore";

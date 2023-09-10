@@ -20,36 +20,36 @@ class Tickets {
       return getStopsList().map((item) => {
         switch (item) {
           case 0:
-            return { chacked: false, stops: 0, title: "Без пересадок", only: true };
+            return { checked: false, stops: 0, title: "Без пересадок", only: true };
 
           case 1:
-            return { chacked: false, stops: 1, title: "1 пеерсадка", only: true };
+            return { checked: false, stops: 1, title: "1 пеерсадка", only: true };
 
           case 2:
-            return { chacked: false, stops: 2, title: "2 пересадки", only: true };
+            return { checked: false, stops: 2, title: "2 пересадки", only: true };
 
           case 3:
-            return { chacked: false, stops: 3, title: "3 пересадки", only: true };
+            return { checked: false, stops: 3, title: "3 пересадки", only: true };
 
           case 4:
-            return { chacked: false, stops: 4, title: "4 пересадки", only: true };
+            return { checked: false, stops: 4, title: "4 пересадки", only: true };
 
           case 5:
-            return { chacked: false, stops: 5, title: "5 пересадок", only: true };
+            return { checked: false, stops: 5, title: "5 пересадок", only: true };
 
           case 6:
-            return { chacked: false, stops: 6, title: "6 пересадок", only: true };
+            return { checked: false, stops: 6, title: "6 пересадок", only: true };
 
           case 7:
-            return { chacked: false, stops: 7, title: "7 пересадок", only: true };
+            return { checked: false, stops: 7, title: "7 пересадок", only: true };
 
           default:
-            break;
+            return { checked: false, stops: 1000, title: "", only: true };
         }
       });
     };
 
-    this.stopsList = [{ chacked: false, stops: -1, title: "Все", only: false }, ...createStopsList()];
+    this.stopsList = [{ checked: false, stops: -1, title: "Все", only: false }, ...createStopsList()];
   };
 
   addStopsToList = (item: stops) => {

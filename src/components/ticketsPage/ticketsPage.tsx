@@ -1,7 +1,6 @@
 import React from "react";
 import TicketsFilter from "./ticketsFilter/ticketsFilter";
 import { TicketsList } from "./ticketsList/ticketsList";
-import mockdata from "../../mockdata/tickets.json";
 import "./ticketsPage.css";
 
 const TicketsPage: React.FC = () => {
