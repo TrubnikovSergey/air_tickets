@@ -4,6 +4,7 @@ import StopsList from "./stopsList/stopsList";
 import { ticketsStore } from "../../../stores/ticketsStore";
 import { stops } from "../../../types";
 import { observer } from "mobx-react-lite";
+import { getStopsList } from "../../../services/tickets";
 import "./ticketsFilter.css";
 
 const TicketsFilter: React.FC = () => {

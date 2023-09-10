@@ -1,4 +1,4 @@
-export type stops = { count: number; title: string; only: boolean };
+export type stops = { checked: boolean; stops: number; title: string; only: boolean };
 
 export enum curency {
   RUB = "RUB",
