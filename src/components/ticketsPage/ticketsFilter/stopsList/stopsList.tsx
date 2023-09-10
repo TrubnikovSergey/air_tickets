@@ -8,8 +8,6 @@ interface StopsListProp {
 }
 
 const StopsList: React.FC<StopsListProp> = ({ list, className }) => {
-  console.log("list", list);
-
   return (
     <div className={className}>
       {list.map((item, idx) => (

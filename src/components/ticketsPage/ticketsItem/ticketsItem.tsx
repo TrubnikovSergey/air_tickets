@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { ticket } from "../../../types";
+import { curency, ticket } from "../../../types";
 import { Card } from "antd";
-import * as dayjs from "dayjs";
 import ru from "dayjs/locale/ru";
+import { ticketsStore } from "../../../stores/ticketsStore";
+import { observer } from "mobx-react-lite";
 import "./ticketsItem.css";
 
 interface TicketsItemProp {
   item: ticket;
 }
 
-dayjs.locale(ru);
-
-const TicketsItem: React.FC<TicketsItemProp> = ({ item }) => {
+const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
   const formatingDate = (date: string): string => {
     const nameDaysWeek = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
@@ -25,10 +24,22 @@ const TicketsItem: React.FC<TicketsItemProp> = ({ item }) => {
     const dayWeek = dt.getDay();
     const dayWeekName = nameDaysWeek[dayWeek];
 
-    // const day = dayjs(dt).format("D MMM YYYY");
-    // const dayWeek = dayjs(dt).format("dd");
-
     return `${d} ${mStr} ${y}, ${dayWeekName}`;
+  };
+
+  const getCurency = (): curency => {
+    switch (ticketsStore.ticketsCurency) {
+      case curency.RUB:
+        return "\u20bd";
+      case curency.EUR:
+        return "\u20ac";
+      case curency.USD:
+        return "\x24";
+
+      default:
+        break;
+    }
+    return "";
   };
 
   return (
@@ -36,14 +47,13 @@ const TicketsItem: React.FC<TicketsItemProp> = ({ item }) => {
       <div className="content-list">
         <div className="left-part">
           <div className="content-left-part">
-            {/* <div>{item.carrier}</div> */}
             <div className="air-company">
               <img src={`/${item.carrier}.png`} alt={item.carrier} />
             </div>
             <div className="button-buy">
               {"Купить"}
               <br />
-              {`за ${item.price} р.`}
+              {`за ${item.price} ${getCurency()}`}
             </div>
           </div>
         </div>
@@ -71,17 +81,9 @@ const TicketsItem: React.FC<TicketsItemProp> = ({ item }) => {
             </div>
           </div>
         </div>
-        {/* <li>{item.carrier}</li> */}
       </div>
     </Card>
   );
 };
 
-/**
- *origin
-origin_name
-destination
-destination_name
- */
-
-export default TicketsItem;
+export const TicketsItem = observer(TicketsItemComponent);

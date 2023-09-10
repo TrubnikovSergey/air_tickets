@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { stops } from "../../../../types";
 import { Checkbox } from "antd";
+import { CheckboxChangeEvent } from "antd/es/checkbox";
 import "./stopsItem.css";
 
 interface StopsItemProp {
@@ -20,9 +21,15 @@ const StopsItem: React.FC<StopsItemProp> = ({ item }) => {
     console.log("handleClickOnly");
   };
 
+  const handleChangeCheck = (e: CheckboxChangeEvent) => {
+    const { checked } = e.target;
+
+    console.log("chacked", item);
+  };
+
   return (
     <div className="stops-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <Checkbox>{item.title}</Checkbox>
+      <Checkbox onChange={handleChangeCheck}>{item.title}</Checkbox>
       {showOnly && (
         <div className="only" onClick={handleClickOnly}>
           ТОЛЬКО

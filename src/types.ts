@@ -1,4 +1,10 @@
-export type stops = { title: string; only: boolean };
+export type stops = { count: number; title: string; only: boolean };
+
+export enum curency {
+  RUB = "RUB",
+  USD = "USD",
+  EUR = "EUR",
+}
 
 export type ticket = {
   origin: string;

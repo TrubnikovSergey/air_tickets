@@ -1,17 +1,14 @@
 import React from "react";
 import { Card, Radio, RadioChangeEvent } from "antd";
-import "./ticketsFilter.css";
 import StopsList from "./stopsList/stopsList";
+import { ticketsStore } from "../../../stores/ticketsStore";
 import { stops } from "../../../types";
+import { observer } from "mobx-react-lite";
+import "./ticketsFilter.css";
 
 const TicketsFilter: React.FC = () => {
-  const stopList: stops[] = [
-    { title: "Все", only: false },
-    { title: "Без пересадок", only: true },
-  ];
-
   const handleChangeRadio = (e: RadioChangeEvent): void => {
-    console.log("handleChangeRadio");
+    ticketsStore.changeCurency(e.target.value);
   };
 
   return (
@@ -33,7 +30,7 @@ const TicketsFilter: React.FC = () => {
         </div>
         <div className="container-stops-list">
           <div className="stops-title">КОЛИЧЕСТВО ПЕРЕСАДОК</div>
-          <StopsList className="stops-list" list={[...stopList, { title: "1 Пересадка", only: true }, { title: "2 Пересадки", only: true }, { title: "3 Пересадки", only: true }]} />
+          <StopsList className="stops-list" list={ticketsStore.stopsList} />
         </div>
       </Card>
     </div>

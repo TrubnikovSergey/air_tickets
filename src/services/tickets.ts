@@ -15,3 +15,9 @@ export const getAllTickets = (): ticket[] => {
 
   return mockdata.tickets;
 };
+
+export const getStopsList = (): string[] => {
+  const stopsList = mockdata.tickets.map((item) => item.stops);
+  const stopsSet = new Set(stopsList);
+  return Array.from(stopsSet).sort();
+};

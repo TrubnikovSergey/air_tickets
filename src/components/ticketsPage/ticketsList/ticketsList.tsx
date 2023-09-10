@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { getAllTickets } from "../../../services/tickets";
 import { ticket } from "../../../types";
 import { Card } from "antd";
-import TicketsItem from "../ticketsItem/ticketsItem";
+import { TicketsItem } from "../ticketsItem/ticketsItem";
+import { observer } from "mobx-react-lite";
+import { ticketsStore } from "../../../stores/ticketsStore";
 import "./ticketsList.css";
 
-const TicketsList: React.FC = () => {
-  const [list, setList] = useState<ticket[]>(getAllTickets());
-
+export const TicketsList: React.FC = observer(() => {
   return (
     <div className="wrapper-list">
-      {list.map((item, idx) => (
+      {ticketsStore.ticketsList.map((item, idx) => (
         <TicketsItem key={idx} item={item} />
       ))}
     </div>
   );
-};
-
-export default TicketsList;
+});
