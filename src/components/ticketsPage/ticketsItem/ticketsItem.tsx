@@ -46,6 +46,16 @@ const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
     return ticketsStore.stopsList.find((item) => item.stops === stops)?.title;
   };
 
+  const calcPrice = (price): number => {
+    if (ticketsStore.ticketsCurency === curency.EUR) {
+      return Number(price / 3).toFixed(2);
+    }
+    if (ticketsStore.ticketsCurency === curency.USD) {
+      return Number(price / 2).toFixed(2);
+    }
+    return price;
+  };
+
   return (
     <Card className="container-list" bodyStyle={{ padding: 0 }}>
       <div className="content-list">
@@ -57,7 +67,7 @@ const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
             <div className="button-buy">
               {"Купить"}
               <br />
-              {`за ${item.price} ${getCurency()}`}
+              {`за ${calcPrice(item.price)} ${getCurency()}`}
             </div>
           </div>
         </div>

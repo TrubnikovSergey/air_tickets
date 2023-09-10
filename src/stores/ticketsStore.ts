@@ -105,16 +105,11 @@ class Tickets {
   };
 
   changeCurency = (value: string) => {
-    // const init = getAllTickets();
-
     if (value === curency.USD) {
       this.setTicketsCurency(curency.USD);
-      // this.setTickets(init.map((item) => ({ ...item, price: Number(item.price / 2).toFixed(2) })));
     } else if (value === curency.EUR) {
       this.setTicketsCurency(curency.EUR);
-      // this.setTickets(init.map((item) => ({ ...item, price: Number(item.price / 3).toFixed(2) })));
     } else {
-      // this.setTickets(init);
       this.setTicketsCurency(curency.RUB);
     }
   };
