@@ -62,6 +62,10 @@ class Tickets {
         }
       });
     }
+
+    console.log(this.stopsList);
+
+    this.ticketsList = getAllTickets().filter((ticket) => ticket.stops === item.stops);
   };
 
   removeStopsFromList = (item: stops) => {

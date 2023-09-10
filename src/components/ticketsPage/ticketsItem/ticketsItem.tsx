@@ -42,6 +42,10 @@ const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
     return "";
   };
 
+  const getTitleStops = (stops: number): string => {
+    return ticketsStore.stopsList.find((item) => item.stops === stops)?.title;
+  };
+
   return (
     <Card className="container-list" bodyStyle={{ padding: 0 }}>
       <div className="content-list">
@@ -62,7 +66,7 @@ const TicketsItemComponent: React.FC<TicketsItemProp> = ({ item }) => {
             <div className="top-part">
               <div className="departure_time">{item.departure_time}</div>
               <div className="right-part__stops">
-                <div className="stops">{`${item.stops} пересадка`}</div>
+                <div className="stops">{`${getTitleStops(item.stops)}`}</div>
                 <div className="airplane">
                   <img src="/airplane.png" alt="" />
                 </div>
