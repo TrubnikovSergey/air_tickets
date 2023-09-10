@@ -20,28 +20,28 @@ class Tickets {
       return getStopsList().map((item) => {
         switch (item) {
           case 0:
-            return { stops: 0, title: "Без пересадок", only: true };
+            return { chacked: false, stops: 0, title: "Без пересадок", only: true };
 
           case 1:
-            return { stops: 1, title: "1 пеерсадка", only: true };
+            return { chacked: false, stops: 1, title: "1 пеерсадка", only: true };
 
           case 2:
-            return { stops: 2, title: "2 пересадки", only: true };
+            return { chacked: false, stops: 2, title: "2 пересадки", only: true };
 
           case 3:
-            return { stops: 3, title: "3 пересадки", only: true };
+            return { chacked: false, stops: 3, title: "3 пересадки", only: true };
 
           case 4:
-            return { stops: 4, title: "4 пересадки", only: true };
+            return { chacked: false, stops: 4, title: "4 пересадки", only: true };
 
           case 5:
-            return { stops: 5, title: "5 пересадок", only: true };
+            return { chacked: false, stops: 5, title: "5 пересадок", only: true };
 
           case 6:
-            return { stops: 6, title: "6 пересадок", only: true };
+            return { chacked: false, stops: 6, title: "6 пересадок", only: true };
 
           case 7:
-            return { stops: 7, title: "7 пересадок", only: true };
+            return { chacked: false, stops: 7, title: "7 пересадок", only: true };
 
           default:
             break;
@@ -49,7 +49,7 @@ class Tickets {
       });
     };
 
-    this.stopsList = [{ stops: -1, title: "Все", only: false }, ...createStopsList()];
+    this.stopsList = [{ chacked: false, stops: -1, title: "Все", only: false }, ...createStopsList()];
   };
 
   addStopsToList = (item: stops) => {
@@ -63,9 +63,9 @@ class Tickets {
       });
     }
 
-    console.log(this.stopsList);
+    const stopsArray = this.stopsList.filter((el) => el.checked).map((el) => el.stops);
 
-    this.ticketsList = getAllTickets().filter((ticket) => ticket.stops === item.stops);
+    this.setTickets(getAllTickets().filter((ticket) => stopsArray.includes(ticket.stops)));
   };
 
   removeStopsFromList = (item: stops) => {
@@ -78,6 +78,10 @@ class Tickets {
         }
       });
     }
+
+    const stopsArray = this.stopsList.filter((el) => el.checked).map((el) => el.stops);
+
+    this.setTickets(getAllTickets().filter((ticket) => stopsArray.includes(ticket.stops)));
   };
 
   clickOnly = (item: stops) => {
@@ -88,6 +92,8 @@ class Tickets {
         el.checked = false;
       }
     });
+
+    this.setTickets(getAllTickets().filter((ticket) => ticket.stops === item.stops));
   };
 
   setTickets = (list: ticket[]) => {
@@ -99,16 +105,16 @@ class Tickets {
   };
 
   changeCurency = (value: string) => {
-    const init = getAllTickets();
+    // const init = getAllTickets();
 
     if (value === curency.USD) {
       this.setTicketsCurency(curency.USD);
-      this.setTickets(init.map((item) => ({ ...item, price: Number(item.price / 2).toFixed(2) })));
+      // this.setTickets(init.map((item) => ({ ...item, price: Number(item.price / 2).toFixed(2) })));
     } else if (value === curency.EUR) {
       this.setTicketsCurency(curency.EUR);
-      this.setTickets(init.map((item) => ({ ...item, price: Number(item.price / 3).toFixed(2) })));
+      // this.setTickets(init.map((item) => ({ ...item, price: Number(item.price / 3).toFixed(2) })));
     } else {
-      this.setTickets(init);
+      // this.setTickets(init);
       this.setTicketsCurency(curency.RUB);
     }
   };
